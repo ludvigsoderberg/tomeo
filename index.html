@@ -137,7 +137,7 @@ T.start($("dial"),s=>{
   $("ring").setAttribute("transform",`rotate(${-s.hv} 160 160)`);
   $("don").setAttribute("transform",`rotate(${s.rel??0} 160 160)`);
   $("screen").classList.toggle("locked",s.locked);
-  $("km").textContent=s.dist?s.dist.v:"—";
+  $("km").textContent=s.dist?s.dist.v:"?";
   $("unit").textContent=s.dist?s.dist.u:"km";
   $("brg").textContent=s.brg==null?"—":Math.round(s.brg)+"° "+s.point;
   $("eta").textContent=s.eta??"—";
