@@ -34,7 +34,7 @@ body{font-family:var(--cond);color:var(--blue);display:flex;justify-content:cent
 .panel::after{inset:12px;border:1.2px solid var(--red)}
 .panel>*{position:relative;z-index:1}
 
-.arc{width:84%;max-width:290px;flex:none;margin-top:-6px}
+.arc{width:84%;max-width:290px;flex:none;margin-top:-6px;overflow:visible}
 .arc text{font:600 19px var(--cond);letter-spacing:3.5px;fill:var(--red);text-anchor:middle}
 
 .dialwrap{position:relative;margin:4px 0;width:clamp(110px,calc(100dvh - 556px - env(safe-area-inset-top) - env(safe-area-inset-bottom)),min(66vw,280px));aspect-ratio:1;flex:none;touch-action:none;cursor:grab}
@@ -125,7 +125,7 @@ for(let i=0;i<72;i++){const big=i%9===0,[a,b]=P(big?120:129,i*5),[c,d]=P(138,i*5
   s+=`<text class="lt ${t=="N"?"n":""}" x="${x}" y="${y}" transform="rotate(${d} ${x} ${y})">${t}</text>`});
 [45,135,225,315].forEach(d=>{const [x,y]=P(100,d);s+=`<path d="M0-6L4 0 0 6-4 0Z" fill="#D9362B" transform="translate(${x} ${y}) rotate(${d})"/>`});
 $("ring").innerHTML=s;
-$("dg").innerHTML=T.donkey({body:"#1C1A1B",inner:"#3A3536",mane:"#2B2829",muzzle:"#332F30",dark:"#0B0A0A",cheek:"none",ring:"#3A3536",neck:true});
+$("dg").innerHTML=T.donkey({body:"#241F1D",inner:"#7A5C47",mane:"#0C0A09",muzzle:"#8B6B52",dark:"#0B0A0A",cheek:"none",ring:"#6B5240",neck:true});
 const cta=$("cta");
 cta.addEventListener("click",async()=>{
   cta.disabled=true;cta.textContent="STARTING...";

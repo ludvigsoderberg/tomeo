@@ -85,10 +85,10 @@ function start(dial,ui){
 window.T={rad,deg,enable,start,demo:DEMO,
   donkey:c=>`
     ${c.neck?`<path d="M52 130 Q40 190 16 232 Q100 266 184 232 Q160 190 148 130Z" fill="${c.body}"/>`:""}
-    <g class="ear l"><ellipse cx="62" cy="40" rx="15" ry="42" transform="rotate(-14 62 40)" fill="${c.body}"/><ellipse cx="62" cy="44" rx="6.5" ry="29" transform="rotate(-14 62 44)" fill="${c.inner}"/></g>
-    <g class="ear r"><ellipse cx="138" cy="40" rx="15" ry="42" transform="rotate(14 138 40)" fill="${c.body}"/><ellipse cx="138" cy="44" rx="6.5" ry="29" transform="rotate(14 138 44)" fill="${c.inner}"/></g>
+    <g class="ear l"><ellipse cx="60" cy="48" rx="16" ry="34" transform="rotate(-16 60 48)" fill="${c.body}"/><ellipse cx="60" cy="52" rx="7" ry="21" transform="rotate(-16 60 52)" fill="${c.inner}"/></g>
+    <g class="ear r"><ellipse cx="140" cy="48" rx="16" ry="34" transform="rotate(16 140 48)" fill="${c.body}"/><ellipse cx="140" cy="52" rx="7" ry="21" transform="rotate(16 140 52)" fill="${c.inner}"/></g>
     <path d="M52 72 Q100 48 148 72 Q160 122 142 170 Q128 204 100 208 Q72 204 58 170 Q40 122 52 72Z" fill="${c.body}"/>
-    <path d="M78 66 Q100 44 122 66 Q112 80 100 78 Q88 80 78 66Z" fill="${c.mane}"/>
+    <path d="M66 74 L72 46 L82 64 L88 34 L97 62 L103 30 L112 62 L120 40 L126 66 L134 74 Q100 84 66 74Z" fill="${c.mane}"/>
     <ellipse cx="100" cy="182" rx="35" ry="26" fill="${c.muzzle}"/>
     <ellipse cx="89" cy="184" rx="4.5" ry="6" fill="${c.dark}"/><ellipse cx="111" cy="184" rx="4.5" ry="6" fill="${c.dark}"/>
     <circle cx="66" cy="146" r="11" fill="${c.cheek}" opacity=".5"/><circle cx="134" cy="146" r="11" fill="${c.cheek}" opacity=".5"/>
