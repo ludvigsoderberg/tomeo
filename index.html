@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="ca">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#2B40A5">
-<title>En Tomeo</title>
+<title>Tomeo</title>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Tomeo">
 <link rel="manifest" href="manifest.webmanifest">
@@ -25,7 +25,7 @@ body{font-family:var(--cond);color:var(--blue);display:flex;justify-content:cent
 
 .title{width:100%;max-width:300px;flex:none}
 .title{overflow:visible}
-.title text{font:400 66px var(--title);letter-spacing:3px;fill:var(--white);text-anchor:middle}
+.title text{font:400 76px var(--title);letter-spacing:3px;fill:var(--white);text-anchor:middle}
 
 .panel{position:relative;flex:1;min-height:0;width:100%;margin-top:-6px;padding:28px 28px 32px;background:var(--white);border-radius:36px;
   display:flex;flex-direction:column;align-items:center;text-align:center}
@@ -78,10 +78,10 @@ body{font-family:var(--cond);color:var(--blue);display:flex;justify-content:cent
 </head>
 <body>
 <main class="screen" id="screen">
-  <svg class="title" viewBox="0 -8 360 128"><path id="ta" d="M16 122 Q180 -2 344 122" fill="none"/><text><textPath href="#ta" startOffset="50%">EN TOMEO</textPath></text></svg>
+  <svg class="title" viewBox="0 -8 360 128"><path id="ta" d="M20 124 Q180 14 340 124" fill="none"/><text><textPath href="#ta" startOffset="50%">TOMEO</textPath></text></svg>
 
   <section class="panel">
-    <svg class="arc" viewBox="0 0 300 40"><path id="ra" d="M8 36 Q150 -8 292 36" fill="none"/><text><textPath href="#ra" startOffset="50%">RUC DE TOTA LA VIDA</textPath></text></svg>
+    <svg class="arc" viewBox="0 0 300 40"><path id="ra" d="M8 36 Q150 -8 292 36" fill="none"/><text><textPath href="#ra" startOffset="50%">MALLORCA'S FINEST DONKEY</textPath></text></svg>
 
     <div class="dialwrap" id="dial">
       <svg viewBox="0 0 320 320">
@@ -95,9 +95,9 @@ body{font-family:var(--cond);color:var(--blue);display:flex;justify-content:cent
     </div>
     <p class="say" id="say">Looking for the donkey&hellip;</p>
 
-    <p class="small">A UNA DIST&Agrave;NCIA DE</p>
+    <p class="small">YOU ARE</p>
     <div class="num"><span id="km">?</span><small id="unit">km</small></div>
-    <p class="place">MALLORCA - ILLES BALEARS</p>
+    <p class="place">FROM TOMEO, IN MALLORCA</p>
 
     <div class="stats">
       <div><b id="brg"></b><span>BEARING</span></div>
@@ -106,7 +106,7 @@ body{font-family:var(--cond);color:var(--blue);display:flex;justify-content:cent
 
     <div class="since">
       <svg viewBox="0 0 46 20"><path d="M2 14 C8 2 24 2 26 10 C27 16 19 17 18 11 C18 7 24 7 24 10 M26 10 C32 12 38 8 44 12" fill="none" stroke="#2B40A5" stroke-width="2" stroke-linecap="round"/></svg>
-      <span>des de sempre</span>
+      <span>since forever</span>
       <svg viewBox="0 0 46 20" style="transform:scaleX(-1)"><path d="M2 14 C8 2 24 2 26 10 C27 16 19 17 18 11 C18 7 24 7 24 10 M26 10 C32 12 38 8 44 12" fill="none" stroke="#2B40A5" stroke-width="2" stroke-linecap="round"/></svg>
     </div>
     <button class="cta" id="cta" type="button">ENABLE COMPASS</button>
@@ -141,7 +141,7 @@ T.start($("dial"),s=>{
   $("unit").textContent=s.dist?s.dist.u:"km";
   $("brg").textContent=s.brg==null?"—":Math.round(s.brg)+"° "+s.point;
   $("eta").textContent=s.eta??"—";
-  $("say").textContent=(s.msg??(s.here?"TOMEO IS RIGHT HERE":s.locked?"JA EL TENS! YOU'RE FACING TOMEO":`TURN ${s.rel>0?"RIGHT":"LEFT"} ${Math.round(Math.abs(s.rel))}° TO FACE HIM`)).toUpperCase();
+  $("say").textContent=(s.msg??(s.here?"TOMEO IS RIGHT HERE":s.locked?"YOU'RE FACING TOMEO. SAY HI.":`TURN ${s.rel>0?"RIGHT":"LEFT"} ${Math.round(Math.abs(s.rel))}° TO FACE HIM`)).toUpperCase();
 });
 </script>
 </body>
