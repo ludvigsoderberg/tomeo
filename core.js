@@ -75,7 +75,7 @@ function start(dial,ui){
       st.shownKm=st.shownKm==null?0:Math.abs(km-st.shownKm)<.001?km:st.shownKm+(km-st.shownKm)*.12;
       dist=km<1?{v:fmt(st.shownKm*1000),u:"m"}:{v:fmt(st.shownKm),u:"km"};
     }
-    const msg=st.err||(!st.enabled?"Tap Enable compass to find Tomeo.":!pos?"Finding your location…":st.h==null?(st.noCompass?"No compass data. Use an iPhone, away from magnets.":"Reading the compass…"):null);
+    const msg=st.err||(!st.enabled?"Tap Enable compass to face Tomeo.":!pos?"Finding your location…":st.h==null?(st.noCompass?"No compass data. Use an iPhone, away from magnets.":"Reading the compass…"):null);
     ui({hv,rel,locked:st.locked,dist,brg,point:brg==null?null:POINTS[Math.round(brg/45)%8],eta:km==null?null:eta(km),msg,here:km!=null&&km<.03,enabled:st.enabled,haveHeading:st.h!=null});
     requestAnimationFrame(frame);
   };
