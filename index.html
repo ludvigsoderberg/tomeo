@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#2B40A5">
+<title>En Tomeo</title>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Tomeo">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<style>
+@font-face{font-family:"Anton";src:url(fonts/anton.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Alfa Slab One";src:url(fonts/alfa-slab-one.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Oswald";src:url(fonts/oswald.woff2) format("woff2");font-weight:200 700;font-display:swap}
+:root{--blue:#2B40A5;--red:#D9362B;--white:#fff;--box:#F4F1EA;
+  --cond:"Oswald","Arial Narrow",sans-serif;--slab:"Alfa Slab One",Georgia,serif;--title:"Anton","Arial Narrow",Impact,sans-serif;--script:"Pinyon Script","Snell Roundhand",cursive}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:var(--blue)}
+body{font-family:var(--cond);color:var(--blue);display:flex;justify-content:center;overflow:hidden}
+.screen{position:relative;width:100%;max-width:430px;height:100dvh;display:flex;flex-direction:column;align-items:center;
+  padding:calc(env(safe-area-inset-top) + 16px) 18px calc(env(safe-area-inset-bottom) + 18px);background:var(--blue)}
+.screen::before{content:"";position:absolute;inset:max(8px,env(safe-area-inset-top)) 8px max(8px,env(safe-area-inset-bottom));border:2px solid var(--white);border-radius:26px;pointer-events:none}
+
+.title{width:100%;max-width:340px;flex:none}
+.title{overflow:visible}
+.title text{font:400 66px var(--title);letter-spacing:3px;fill:var(--white);text-anchor:middle}
+
+.panel{position:relative;flex:1;min-height:0;width:100%;margin-top:-6px;padding:30px 20px 16px;background:var(--white);border-radius:36px;
+  display:flex;flex-direction:column;align-items:center;text-align:center}
+.panel::before,.panel::after{content:"";position:absolute;pointer-events:none;border-radius:30px}
+.panel::before{inset:6px;border:2.5px solid var(--blue)}
+.panel::after{inset:12px;border:1.2px solid var(--red)}
+.panel>*{position:relative;z-index:1}
+
+.arc{width:84%;max-width:290px;flex:none;margin-top:-6px}
+.arc text{font:600 19px var(--cond);letter-spacing:3.5px;fill:var(--red);text-anchor:middle}
+
+.dialwrap{position:relative;margin:4px 0;width:min(66vw,280px,33vh);aspect-ratio:1;flex:none;touch-action:none;cursor:grab}
+.dialwrap svg{width:100%;height:100%;display:block;overflow:visible}
+.oct{fill:var(--white);stroke:var(--blue);stroke-width:8;stroke-linejoin:round;transition:stroke .3s}
+.oct2{fill:none;stroke:var(--red);stroke-width:1.6}
+.locked .oct{stroke:var(--red)}
+.pointer{fill:var(--red);stroke:var(--white);stroke-width:2.5;stroke-linejoin:round}
+.pulse{fill:none;stroke:var(--red);stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:center}
+.locked .pulse{animation:pulse 1.5s ease-out 1}
+@keyframes pulse{from{opacity:.7;transform:scale(1)}to{opacity:0;transform:scale(1.2)}}
+.lt{font:400 28px var(--title);text-anchor:middle;dominant-baseline:central;fill:var(--blue)}
+.lt.n{fill:var(--red)}
+.ear{transform-box:fill-box;transform-origin:50% 100%;transition:transform .5s cubic-bezier(.3,1.8,.5,1)}
+.ear.l{transform:rotate(-4deg)}.ear.r{transform:rotate(4deg)}
+.locked .ear.l{animation:fl 1.1s infinite;transform:rotate(-18deg)}
+.locked .ear.r{animation:fr 1.1s .15s infinite;transform:rotate(18deg)}
+@keyframes fl{50%{transform:rotate(-8deg)}}
+@keyframes fr{50%{transform:rotate(8deg)}}
+
+.say{min-height:1.3em;font:500 16px var(--cond);letter-spacing:1.5px;color:var(--blue);transition:color .3s}
+.locked .say{color:var(--red);font-weight:600}
+.small{margin-top:10px;font:500 15px var(--cond);letter-spacing:3px;color:var(--blue)}
+.num{margin-top:2px;font:400 clamp(56px,17vw,72px)/1 var(--slab);color:var(--red);font-variant-numeric:tabular-nums}
+.num small{font-size:.38em;margin-left:.15em}
+.place{font:500 14px var(--cond);letter-spacing:3px;color:var(--red)}
+.stats{display:flex;width:100%;margin-top:10px;border-top:1px solid var(--blue);border-bottom:1px solid var(--blue)}
+.stats div{flex:1;padding:6px 4px}
+.stats div+div{border-left:1px solid var(--blue)}
+.stats b{display:block;font:600 17px var(--cond);letter-spacing:1px}
+.stats span{font:500 11px var(--cond);letter-spacing:2.5px;color:var(--red)}
+.since{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:auto;padding-top:8px}
+.since span{font:italic 700 17px Georgia,serif;color:var(--red)}
+.since svg{width:46px;height:20px}
+.cta{margin-top:8px;width:100%;padding:13px;border:0;border-radius:99px;background:var(--blue);color:var(--white);font:600 17px var(--cond);letter-spacing:3px;transition:transform .15s}
+.cta:active{transform:scale(.97)}
+.cta:disabled{opacity:.6}
+@media (max-height:720px){.title{max-width:250px}.arc{display:none}.since{display:none}.panel{padding-top:20px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="screen" id="screen">
+  <svg class="title" viewBox="0 -8 360 128"><path id="ta" d="M16 122 Q180 -2 344 122" fill="none"/><text><textPath href="#ta" startOffset="50%">EN TOMEO</textPath></text></svg>
+
+  <section class="panel">
+    <svg class="arc" viewBox="0 0 300 40"><path id="ra" d="M8 36 Q150 -8 292 36" fill="none"/><text><textPath href="#ra" startOffset="50%">RUC DE TOTA LA VIDA</textPath></text></svg>
+
+    <div class="dialwrap" id="dial">
+      <svg viewBox="0 0 320 320">
+        <path class="pointer" d="M160 14 l-13 -22 h26z"/>
+        <polygon class="oct" id="oct"/>
+        <polygon class="oct2" id="oct2"/>
+        <polygon class="pulse" id="octp"/>
+        <g id="ring"></g>
+        <g id="don"><g id="dg" transform="translate(100 74) scale(.6)"></g></g>
+      </svg>
+    </div>
+    <p class="say" id="say">Looking for the donkey&hellip;</p>
+
+    <p class="small">A UNA DIST&Agrave;NCIA DE</p>
+    <div class="num"><span id="km">&mdash;</span><small id="unit">km</small></div>
+    <p class="place">MALLORCA - ILLES BALEARS</p>
+
+    <div class="stats">
+      <div><b id="brg"></b><span>BEARING</span></div>
+      <div><b id="eta"></b><span>BY DONKEY</span></div>
+    </div>
+
+    <div class="since">
+      <svg viewBox="0 0 46 20"><path d="M2 14 C8 2 24 2 26 10 C27 16 19 17 18 11 C18 7 24 7 24 10 M26 10 C32 12 38 8 44 12" fill="none" stroke="#2B40A5" stroke-width="2" stroke-linecap="round"/></svg>
+      <span>des de sempre</span>
+      <svg viewBox="0 0 46 20" style="transform:scaleX(-1)"><path d="M2 14 C8 2 24 2 26 10 C27 16 19 17 18 11 C18 7 24 7 24 10 M26 10 C32 12 38 8 44 12" fill="none" stroke="#2B40A5" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
+    <button class="cta" id="cta" type="button">ENABLE COMPASS</button>
+  </section>
+</main>
+<script src="wmm.js"></script>
+<script src="core.js"></script>
+<script>
+const $=id=>document.getElementById(id),P=(r,d)=>[160+Math.sin(T.rad(d))*r,160-Math.cos(T.rad(d))*r];
+const oct=R=>[0,1,2,3,4,5,6,7].map(k=>P(R,22.5+45*k).map(n=>n.toFixed(1)).join(",")).join(" ");
+$("oct").setAttribute("points",oct(162));$("oct2").setAttribute("points",oct(154));$("octp").setAttribute("points",oct(162));
+let s="";
+for(let i=0;i<72;i++){const big=i%9===0,[a,b]=P(big?120:129,i*5),[c,d]=P(138,i*5);
+  s+=`<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" stroke="${big?"#D9362B":"#2B40A5"}" stroke-width="${big?2.6:1.2}"/>`}
+[["N",0],["E",90],["S",180],["W",270]].forEach(([t,d])=>{const [x,y]=P(100,d);
+  s+=`<text class="lt ${t=="N"?"n":""}" x="${x}" y="${y}" transform="rotate(${d} ${x} ${y})">${t}</text>`});
+[45,135,225,315].forEach(d=>{const [x,y]=P(100,d);s+=`<path d="M0-6L4 0 0 6-4 0Z" fill="#D9362B" transform="translate(${x} ${y}) rotate(${d})"/>`});
+$("ring").innerHTML=s;
+$("dg").innerHTML=T.donkey({body:"#1C1A1B",inner:"#D9362B",mane:"#2B40A5",muzzle:"#D9CDB8",dark:"#0B0A0A",cheek:"#E0493B",ring:"#F4F1EA"});
+const cta=$("cta");
+cta.addEventListener("click",async()=>{
+  cta.disabled=true;cta.textContent="STARTING...";
+  const ok=await T.enable();
+  cta.textContent=ok?"COMPASS ON":"TRY AGAIN";cta.disabled=ok;
+});
+if(T.demo){cta.hidden=true}
+T.start($("dial"),s=>{
+  $("ring").setAttribute("transform",`rotate(${-s.hv} 160 160)`);
+  $("don").setAttribute("transform",`rotate(${s.rel??0} 160 160)`);
+  $("screen").classList.toggle("locked",s.locked);
+  $("km").textContent=s.dist?s.dist.v:"—";
+  $("unit").textContent=s.dist?s.dist.u:"km";
+  $("brg").textContent=s.brg==null?"—":Math.round(s.brg)+"° "+s.point;
+  $("eta").textContent=s.eta??"—";
+  $("say").textContent=(s.msg??(s.here?"TOMEO IS RIGHT HERE":s.locked?"JA EL TENS! YOU'RE FACING TOMEO":`TURN ${s.rel>0?"RIGHT":"LEFT"} ${Math.round(Math.abs(s.rel))}° TO FIND HIM`)).toUpperCase();
+});
+</script>
+</body>
+</html>
