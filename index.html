@@ -37,7 +37,7 @@ body{font-family:var(--cond);color:var(--blue);display:flex;justify-content:cent
 .arc{width:84%;max-width:290px;flex:none;margin-top:-6px;overflow:visible}
 .arc text{font:600 14px var(--cond);letter-spacing:1.6px;fill:var(--red);text-anchor:middle}
 
-.dialwrap{position:relative;margin:4px 0;width:clamp(110px,calc(100dvh - 556px - env(safe-area-inset-top) - env(safe-area-inset-bottom)),min(66vw,280px));aspect-ratio:1;flex:none;touch-action:none;cursor:grab}
+.dialwrap{position:relative;margin:4px 0;width:clamp(110px,calc(100dvh - 524px - env(safe-area-inset-top) - env(safe-area-inset-bottom)),min(66vw,280px));aspect-ratio:1;flex:none;touch-action:none;cursor:grab}
 .dialwrap svg{width:100%;height:100%;display:block;overflow:visible}
 .oct{fill:var(--white);stroke:var(--blue);stroke-width:8;stroke-linejoin:round;transition:stroke .3s}
 .oct2{fill:none;stroke:var(--red);stroke-width:1.6}
@@ -61,18 +61,15 @@ body{font-family:var(--cond);color:var(--blue);display:flex;justify-content:cent
 .num{margin-top:2px;font:400 clamp(56px,17vw,72px)/1 var(--slab);color:var(--red);font-variant-numeric:tabular-nums}
 .num small{font-size:.38em;margin-left:.15em}
 .place{font:500 14px var(--cond);letter-spacing:3px;color:var(--red)}
-.stats{display:flex;width:100%;margin-top:10px;border-top:1px solid var(--blue);border-bottom:1px solid var(--blue)}
+.stats{display:flex;width:100%;margin:10px 0 14px;border-top:1px solid var(--blue);border-bottom:1px solid var(--blue)}
 .stats div{flex:1;padding:6px 4px}
 .stats div+div{border-left:1px solid var(--blue)}
 .stats b{display:block;font:600 17px var(--cond);letter-spacing:1px}
 .stats span{font:500 11px var(--cond);letter-spacing:2.5px;color:var(--red)}
-.since{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:auto;padding-top:12px}
-.since span{font:italic 700 17px Georgia,serif;color:var(--red)}
-.since svg{width:46px;height:20px}
-.cta{margin-top:12px;width:100%;padding:13px;border:0;border-radius:99px;background:var(--blue);color:var(--white);font:600 17px var(--cond);letter-spacing:3px;transition:transform .15s}
+.cta{margin-top:auto;width:100%;padding:13px;border:0;border-radius:99px;background:var(--blue);color:var(--white);font:600 17px var(--cond);letter-spacing:3px;transition:transform .15s}
 .cta:active{transform:scale(.97)}
 .cta:disabled{opacity:.6}
-@media (max-height:700px){.title{max-width:250px}.arc{display:none}.since{display:none}.panel{padding-top:20px}.dialwrap{width:clamp(110px,calc(100dvh - 470px - env(safe-area-inset-top) - env(safe-area-inset-bottom)),min(66vw,280px))}}
+@media (max-height:700px){.title{max-width:250px}.arc{display:none}.panel{padding-top:20px}.dialwrap{width:clamp(110px,calc(100dvh - 470px - env(safe-area-inset-top) - env(safe-area-inset-bottom)),min(66vw,280px))}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -104,11 +101,6 @@ body{font-family:var(--cond);color:var(--blue);display:flex;justify-content:cent
       <div><b id="eta"></b><span>BY DONKEY</span></div>
     </div>
 
-    <div class="since">
-      <svg viewBox="0 0 46 20"><path d="M2 14 C8 2 24 2 26 10 C27 16 19 17 18 11 C18 7 24 7 24 10 M26 10 C32 12 38 8 44 12" fill="none" stroke="#2B40A5" stroke-width="2" stroke-linecap="round"/></svg>
-      <span>since forever</span>
-      <svg viewBox="0 0 46 20" style="transform:scaleX(-1)"><path d="M2 14 C8 2 24 2 26 10 C27 16 19 17 18 11 C18 7 24 7 24 10 M26 10 C32 12 38 8 44 12" fill="none" stroke="#2B40A5" stroke-width="2" stroke-linecap="round"/></svg>
-    </div>
     <button class="cta" id="cta" type="button">ENABLE COMPASS</button>
   </section>
 </main>
