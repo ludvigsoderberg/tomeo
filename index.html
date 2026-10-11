@@ -90,7 +90,7 @@ body{font-family:var(--cond);color:var(--blue);display:flex;justify-content:cent
         <polygon class="oct2" id="oct2"/>
         <polygon class="pulse" id="octp"/>
         <g id="ring"></g>
-        <g id="don"><g id="dg" transform="translate(100 74) scale(.6)"></g></g>
+        <g id="don"><g id="dg" transform="translate(105 92) scale(.55)"></g></g>
       </svg>
     </div>
     <p class="say" id="say">Looking for the donkey&hellip;</p>
@@ -125,7 +125,7 @@ for(let i=0;i<72;i++){const big=i%9===0,[a,b]=P(big?120:129,i*5),[c,d]=P(138,i*5
   s+=`<text class="lt ${t=="N"?"n":""}" x="${x}" y="${y}" transform="rotate(${d} ${x} ${y})">${t}</text>`});
 [45,135,225,315].forEach(d=>{const [x,y]=P(100,d);s+=`<path d="M0-6L4 0 0 6-4 0Z" fill="#D9362B" transform="translate(${x} ${y}) rotate(${d})"/>`});
 $("ring").innerHTML=s;
-$("dg").innerHTML=T.donkey({body:"#1C1A1B",inner:"#D9362B",mane:"#2B40A5",muzzle:"#D9CDB8",dark:"#0B0A0A",cheek:"#E0493B",ring:"#F4F1EA"});
+$("dg").innerHTML=T.donkey({body:"#1C1A1B",inner:"#3A3536",mane:"#2B2829",muzzle:"#332F30",dark:"#0B0A0A",cheek:"none",ring:"#3A3536",neck:true});
 const cta=$("cta");
 cta.addEventListener("click",async()=>{
   cta.disabled=true;cta.textContent="STARTING...";

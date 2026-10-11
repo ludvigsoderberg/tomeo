@@ -84,6 +84,7 @@ function start(dial,ui){
 
 window.T={rad,deg,enable,start,demo:DEMO,
   donkey:c=>`
+    ${c.neck?`<path d="M52 130 Q40 190 16 232 Q100 266 184 232 Q160 190 148 130Z" fill="${c.body}"/>`:""}
     <g class="ear l"><ellipse cx="62" cy="40" rx="15" ry="42" transform="rotate(-14 62 40)" fill="${c.body}"/><ellipse cx="62" cy="44" rx="6.5" ry="29" transform="rotate(-14 62 44)" fill="${c.inner}"/></g>
     <g class="ear r"><ellipse cx="138" cy="40" rx="15" ry="42" transform="rotate(14 138 40)" fill="${c.body}"/><ellipse cx="138" cy="44" rx="6.5" ry="29" transform="rotate(14 138 44)" fill="${c.inner}"/></g>
     <path d="M52 72 Q100 48 148 72 Q160 122 142 170 Q128 204 100 208 Q72 204 58 170 Q40 122 52 72Z" fill="${c.body}"/>
